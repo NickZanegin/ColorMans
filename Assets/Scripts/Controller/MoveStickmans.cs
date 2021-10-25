@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveStickmans : MonoBehaviour
 {
     [SerializeField] CashAccess cash;
+    [SerializeField] ParticleSystem explosion;
 
     GameObject fertsStickman;
     GwWaypoint[] waipoint;
@@ -47,7 +48,7 @@ public class MoveStickmans : MonoBehaviour
     private void GoToPosition(GameObject stickman)
     {
         fertsStickman.AddComponent<Move>().StartMove(waipoint);
-        fertsStickman.AddComponent<CollisionStickman>().addTarget(stickman);
+        fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman, explosion);
         fertsStickman.GetComponent<CapsuleCollider>().enabled = true;
         stickman.GetComponent<CapsuleCollider>().enabled = true;
         cash.AddPoints(waipoint[0]);

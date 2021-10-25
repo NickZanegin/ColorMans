@@ -15,6 +15,7 @@ public class SelectStickman : MonoBehaviour
     public void FailConect(GameObject ferstStik, GameObject lastStik)
     {
         ferstStik.GetComponent<CapsuleCollider>().enabled = true;
+        ferstStik.GetComponent<Animator>().SetBool("Select", false);
         lastStik.GetComponent<CapsuleCollider>().enabled = true;
     }
 }

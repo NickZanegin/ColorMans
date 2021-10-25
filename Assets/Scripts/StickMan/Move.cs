@@ -12,6 +12,7 @@ public class Move : MonoBehaviour
 	public void StartMove(GwWaypoint[] point)
 	{
 		animator = GetComponent<Animator>();
+		animator.SetBool("Select", false);
 		animator.SetBool("Run",true);
 		waypoints = point;
 	}
