@@ -559,9 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3111903572351831165}
   - component: {fileID: 3111903572361094065}
-  - component: {fileID: -5459533705109719808}
   - component: {fileID: 6288812032631518430}
-  - component: {fileID: 5066148028460060257}
   - component: {fileID: 4790420387663230667}
   m_Layer: 0
   m_Name: Red
@@ -596,7 +594,7 @@ Animator:
   m_GameObject: {fileID: 3111903572351733791}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
-  m_Controller: {fileID: 9100000, guid: 29c89f6b95f73bd47974e8aad12b0e6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9a266d1fb0efa20458d3a11ef0b33fdd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -605,18 +603,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-5459533705109719808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111903572351733791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790e87bda72ed6f4ab500a3f6b9a0fc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6288812032631518430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,19 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c73cd8dfe5a05e4ca4d9576f8f4b137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5066148028460060257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111903572351733791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f7ad970ba06ca418f689328cd6efbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphways: []
+  explosion: {fileID: 0}
 --- !u!136 &4790420387663230667
 CapsuleCollider:
   m_ObjectHideFlags: 0

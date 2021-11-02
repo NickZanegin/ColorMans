@@ -1,19 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LvlManager : MonoBehaviour
 {
-    [SerializeField] private List<string> lvls;
+    [SerializeField] private string lvls;
     static LvlManager Instance;
     private void Awake()
     {
         Instance = this;
     }
-    public static void CheckLvl()
-    {
-        Instance.strtRoutine();
-    }
+    public static void CheckLvl() => Instance.strtRoutine();
     public void strtRoutine()
     {
         StartCoroutine(LvlCheck());
@@ -24,9 +20,10 @@ public class LvlManager : MonoBehaviour
         var haveStickman = GetComponentInChildren<IColor>();
         if(haveStickman == null)
         {
-            var lvl = Resources.Load($"Prefab/{lvls[0]}");
+            var lvl = Resources.Load($"Prefab/{lvls}");
             var nextlvl = Instantiate(lvl, Vector3.zero, Quaternion.identity);
             Destroy(gameObject);
+            MoveStickmans.LinksNew();
         }
     }
 }

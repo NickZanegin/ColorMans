@@ -629,9 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3204212300814979850}
   - component: {fileID: 3204212300824542406}
-  - component: {fileID: 3626436308681011657}
   - component: {fileID: 3699068362640629291}
-  - component: {fileID: 995207942319847734}
   - component: {fileID: -771332960078246127}
   m_Layer: 0
   m_Name: Green
@@ -666,7 +664,7 @@ Animator:
   m_GameObject: {fileID: 3204212300815011688}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
-  m_Controller: {fileID: 9100000, guid: 29c89f6b95f73bd47974e8aad12b0e6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28df21ea68b492a40812958eed09c14c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -675,18 +673,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3626436308681011657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3204212300815011688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790e87bda72ed6f4ab500a3f6b9a0fc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3699068362640629291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,19 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94606bc4cd8ad86409eeb06f111ff326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &995207942319847734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3204212300815011688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f7ad970ba06ca418f689328cd6efbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graphways: []
+  explosion: {fileID: 0}
 --- !u!136 &-771332960078246127
 CapsuleCollider:
   m_ObjectHideFlags: 0

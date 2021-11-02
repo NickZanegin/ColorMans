@@ -1,15 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Move : MonoBehaviour
 {
 
 	private Animator animator;
-	private GwWaypoint[] waypoints;
+	public List<Point> waypoints;
 
 	public const int MAX_SPEED = 10;
 	public const int ACCELERATION = 5;
 	private float speed = 0;
-	public void StartMove(GwWaypoint[] point)
+	public void StartMove(List<Point> point)
 	{
 		animator = GetComponent<Animator>();
 		animator.SetBool("Select", false);
@@ -18,16 +19,16 @@ public class Move : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (waypoints != null && waypoints.Length > 0)
+		if (waypoints != null && waypoints.Count > 0)
 		{
 			speed = Mathf.Lerp(speed, MAX_SPEED, Time.deltaTime * ACCELERATION);
 			speed = Mathf.Clamp(speed, 0, MAX_SPEED);
 
-			transform.LookAt(waypoints[0].position);
+			transform.LookAt(waypoints[0].transform.localPosition);
 
-			transform.position = Vector3.MoveTowards(transform.position, waypoints[0].position, Time.deltaTime * waypoints[0].speed * speed);
+			transform.position = Vector3.MoveTowards(transform.position, waypoints[0].transform.localPosition, Time.deltaTime * speed);
 
-			if (Vector3.Distance(transform.position, waypoints[0].position) < 0.1f)
+			if (Vector3.Distance(transform.position, waypoints[0].transform.localPosition) < 0.1f)
 			{
 				NextWaypoint();
 			}
@@ -40,16 +41,9 @@ public class Move : MonoBehaviour
 
 	private void NextWaypoint()
 	{
-		if (waypoints.Length > 1)
+		if (waypoints.Count > 1)
 		{
-			GwWaypoint[] newWaypoints = new GwWaypoint[waypoints.Length - 1];
-
-			for (int i = 1; i < waypoints.Length; i++)
-			{
-				newWaypoints[i - 1] = waypoints[i];
-			}
-
-			waypoints = newWaypoints;
+			waypoints.RemoveAt(0);
 		}
 		else
 		{

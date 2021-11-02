@@ -9,13 +9,12 @@ public class SelectStickman : MonoBehaviour
     }
     public int Action(GameObject stickman)
     {
-        stickman.GetComponent<CapsuleCollider>().enabled = false;
         return stickman.GetComponent<IColor>().ColorIndex();
     }
-    public void FailConect(GameObject ferstStik, GameObject lastStik)
+    public void FailConect(GameObject ferstStik)
     {
-        ferstStik.GetComponent<CapsuleCollider>().enabled = true;
-        ferstStik.GetComponent<Animator>().SetBool("Select", false);
-        lastStik.GetComponent<CapsuleCollider>().enabled = true;
+        var anim = ferstStik.GetComponent<Animator>();
+        anim.SetBool("NoWay", true);
+        anim.SetBool("Select", false);
     }
 }

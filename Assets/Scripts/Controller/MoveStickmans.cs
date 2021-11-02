@@ -5,53 +5,62 @@ using UnityEngine;
 
 public class MoveStickmans : MonoBehaviour
 {
-    [SerializeField] CashAccess cash;
-    [SerializeField] ParticleSystem explosion;
+    static MoveStickmans moveStickmans;
+    [SerializeField] PathFinder pathFinder;
+    [SerializeField] PointsArray pointsArray;
 
     GameObject fertsStickman;
-    GwWaypoint[] waipoint;
+    [SerializeField] List<Point> waipoint;
+    List<Point> Reverswaipoint;
 
-    public Action<GameObject,GameObject> PathFail;
+    public Action<GameObject> PathFail;
     public Action Unselect;
+    private void Awake()
+    {
+        moveStickmans = this;
+    }
+    public static void LinksNew() => moveStickmans.NewLicks();
+    private void NewLicks()
+    {
+        pathFinder = FindObjectOfType<PathFinder>();
+        pointsArray = FindObjectOfType<PointsArray>();
+    }
     public void Action(GameObject stickman)
     {
-        StartCoroutine(FindPathRoutine(stickman));
-        //TODO: Добавить перепроверку на случай нескольких вариантов путей.
+        FindWay(stickman);
     }
     public void addFerstStik(GameObject ferst)
     {
         fertsStickman = ferst;
     }
-    private void FindFidback(GwWaypoint[] path)
+    public void FindWay(GameObject stickman)
     {
-        waipoint = path;
-    }
-    private IEnumerator FindPathRoutine(GameObject stickman)
-    {
-        FindWay(stickman);
-        yield return null;
-        if (TryToAccessPath.TryAcccess(waipoint))
+        var ID = fertsStickman.GetComponent<IColor>();
+        var start = pointsArray.FindPoint(ID.GetLine(), ID.GetColumn());
+        ID = stickman.GetComponent<IColor>();
+        var finish = pointsArray.FindPoint(ID.GetLine(), ID.GetColumn());
+        start.Open();
+        finish.Open();
+        bool way = pathFinder.FindePath(start, finish);
+        if (way)
         {
+            waipoint = pathFinder.way;
             GoToPosition(stickman);
         }
         else
         {
-            fertsStickman.GetComponent<ConectionList>().CloseAllGraph();
-            Unselect?.Invoke();
-            PathFail?.Invoke(fertsStickman, stickman);
+            start.Close();
+            finish.Close();
+            waipoint.Clear();
+            PathFail?.Invoke(stickman);
         }
-    }
-    public void FindWay(GameObject stickman)
-    {
-        Graphway.FindPath(fertsStickman.transform.position, stickman.transform.position, FindFidback, true, false);
     }
     private void GoToPosition(GameObject stickman)
     {
         fertsStickman.AddComponent<Move>().StartMove(waipoint);
-        fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman, explosion);
+        //stickman.AddComponent<Move>().StartMove(Reverswaipoint);
+        fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman);
         fertsStickman.GetComponent<CapsuleCollider>().enabled = true;
         stickman.GetComponent<CapsuleCollider>().enabled = true;
-        cash.AddPoints(waipoint[0]);
-        cash.AddPoints(waipoint[waipoint.Length - 1]);
     }
 }

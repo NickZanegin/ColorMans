@@ -9,7 +9,6 @@ public class RayComand : MonoBehaviour
     int fertsStickmanColor;
     int lastStickmanColor;
     GameObject ferstStik;
-    GameObject lastStik;
 
     public Action<GameObject> selectEvent;
     public Action UnSelectEvent;
@@ -30,7 +29,6 @@ public class RayComand : MonoBehaviour
     public void LastClick(GameObject stickman)
     {
         lastStickmanColor = select.Action(stickman);
-        lastStik = stickman;
         if (lastStickmanColor == fertsStickmanColor)
         {
             move.Action(stickman);
@@ -39,11 +37,10 @@ public class RayComand : MonoBehaviour
         }
         else
         {
-            select.FailConect(ferstStik, lastStik);
+            select.FailConect(ferstStik);
             UnSelectEvent?.Invoke();
         }
         controller.tap -= LastClick;
         controller.tap += FerstClick;
-
     }
 }

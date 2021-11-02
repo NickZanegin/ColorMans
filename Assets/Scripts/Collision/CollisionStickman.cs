@@ -9,17 +9,19 @@ public class CollisionStickman : MonoBehaviour
     {
         if (Vector3.Distance(gameObject.transform.position,lastStickman.transform.position) < 1)
         {
+            explosion = GetComponent<IColor>().GetParticle();
             explosion.transform.position = transform.position;
             explosion.Play();
+            GetComponent<Move>().waypoints.Clear();
             Destroy(lastStickman);
             Destroy(gameObject);
+            CameraShake.Shake();
             LvlManager.CheckLvl();
         }
     }
-    public void addLinks(GameObject stickman, ParticleSystem explosion)
+    public void addLinks(GameObject stickman)
     {
         lastStickman = stickman;
-        this.explosion = explosion;
     }
     
 }
