@@ -16,5 +16,6 @@ public class SelectStickman : MonoBehaviour
         var anim = ferstStik.GetComponent<Animator>();
         anim.SetBool("NoWay", true);
         anim.SetBool("Select", false);
+        WrongScreen.Wrong();
     }
 }

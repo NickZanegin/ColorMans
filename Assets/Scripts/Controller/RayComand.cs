@@ -19,7 +19,9 @@ public class RayComand : MonoBehaviour
     public void FerstClick(GameObject stickman)
     {
         fertsStickmanColor = select.Action(stickman);
-        stickman.GetComponent<Animator>().SetBool("Select", true);
+        var anim = stickman.GetComponent<Animator>();
+        anim.SetBool("Select", true);
+        anim.SetBool("NoWay", false);
         ferstStik = stickman;
         move.addFerstStik(stickman);
         selectEvent?.Invoke(stickman);

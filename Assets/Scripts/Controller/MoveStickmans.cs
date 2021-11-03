@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ public class MoveStickmans : MonoBehaviour
     static MoveStickmans moveStickmans;
     [SerializeField] PathFinder pathFinder;
     [SerializeField] PointsArray pointsArray;
+    [SerializeField] SelectActive select;
 
     GameObject fertsStickman;
     [SerializeField] List<Point> waipoint;
@@ -52,14 +52,16 @@ public class MoveStickmans : MonoBehaviour
             start.Close();
             finish.Close();
             waipoint.Clear();
-            PathFail?.Invoke(stickman);
+            PathFail?.Invoke(fertsStickman);
+            Unselect?.Invoke();
+            WrongScreen.Wrong();
         }
     }
     private void GoToPosition(GameObject stickman)
     {
         fertsStickman.AddComponent<Move>().StartMove(waipoint);
         //stickman.AddComponent<Move>().StartMove(Reverswaipoint);
-        fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman);
+        fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman,select);
         fertsStickman.GetComponent<CapsuleCollider>().enabled = true;
         stickman.GetComponent<CapsuleCollider>().enabled = true;
     }

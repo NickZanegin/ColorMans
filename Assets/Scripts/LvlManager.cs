@@ -24,6 +24,7 @@ public class LvlManager : MonoBehaviour
             var nextlvl = Instantiate(lvl, Vector3.zero, Quaternion.identity);
             Destroy(gameObject);
             MoveStickmans.LinksNew();
+            ChangeBG.NextBG();
         }
     }
 }

@@ -4,6 +4,7 @@ public class CollisionStickman : MonoBehaviour
 {
     GameObject lastStickman;
     ParticleSystem explosion;
+    SelectActive select;
 
     public void Update()
     {
@@ -14,14 +15,16 @@ public class CollisionStickman : MonoBehaviour
             explosion.Play();
             GetComponent<Move>().waypoints.Clear();
             Destroy(lastStickman);
-            Destroy(gameObject);
             CameraShake.Shake();
             LvlManager.CheckLvl();
+            select.StopSelect();
+            Destroy(gameObject);
         }
     }
-    public void addLinks(GameObject stickman)
+    public void addLinks(GameObject stickman, SelectActive select)
     {
         lastStickman = stickman;
+        this.select = select; 
     }
     
 }
