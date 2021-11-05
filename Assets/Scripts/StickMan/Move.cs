@@ -24,11 +24,11 @@ public class Move : MonoBehaviour
 			speed = Mathf.Lerp(speed, MAX_SPEED, Time.deltaTime * ACCELERATION);
 			speed = Mathf.Clamp(speed, 0, MAX_SPEED);
 
-			transform.LookAt(waypoints[0].transform.localPosition);
+			transform.LookAt(waypoints[0].transform.position);
 
-			transform.position = Vector3.MoveTowards(transform.position, waypoints[0].transform.localPosition, Time.deltaTime * speed);
+			transform.position = Vector3.MoveTowards(transform.position, waypoints[0].transform.position, Time.deltaTime * speed);
 
-			if (Vector3.Distance(transform.position, waypoints[0].transform.localPosition) < 0.1f)
+			if (Vector3.Distance(transform.position, waypoints[0].transform.position) < 0.1f)
 			{
 				NextWaypoint();
 			}

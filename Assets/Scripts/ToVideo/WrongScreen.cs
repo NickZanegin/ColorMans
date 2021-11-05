@@ -8,6 +8,8 @@ public class WrongScreen : MonoBehaviour
     WaitForSeconds wait;
     [SerializeField] float waitTime = 0.15f; 
     [SerializeField] private Image image;
+    [SerializeField] private Image fail;
+
     private void Awake()
     {
         screen = this;
@@ -22,7 +24,9 @@ public class WrongScreen : MonoBehaviour
     IEnumerator Flash()
     {
         image.enabled = true;
+        fail.enabled = true;
         yield return wait;
         image.enabled = false;
+        fail.enabled = false;
     }
 }

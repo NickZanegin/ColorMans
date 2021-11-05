@@ -11,13 +11,15 @@ public class MoveStickmans : MonoBehaviour
 
     GameObject fertsStickman;
     [SerializeField] List<Point> waipoint;
-    List<Point> Reverswaipoint;
+    List<Point> reverswaipoint;
+    Point start;
 
     public Action<GameObject> PathFail;
     public Action Unselect;
     private void Awake()
     {
         moveStickmans = this;
+        reverswaipoint = new List<Point>();
     }
     public static void LinksNew() => moveStickmans.NewLicks();
     private void NewLicks()
@@ -36,13 +38,12 @@ public class MoveStickmans : MonoBehaviour
     public void FindWay(GameObject stickman)
     {
         var ID = fertsStickman.GetComponent<IColor>();
-        var start = pointsArray.FindPoint(ID.GetLine(), ID.GetColumn());
+        start = pointsArray.FindPoint(ID.GetLine(), ID.GetColumn());
         ID = stickman.GetComponent<IColor>();
         var finish = pointsArray.FindPoint(ID.GetLine(), ID.GetColumn());
         start.Open();
         finish.Open();
-        bool way = pathFinder.FindePath(start, finish);
-        if (way)
+        if (pathFinder.FindePath(start, finish))
         {
             waipoint = pathFinder.way;
             GoToPosition(stickman);
@@ -54,15 +55,30 @@ public class MoveStickmans : MonoBehaviour
             waipoint.Clear();
             PathFail?.Invoke(fertsStickman);
             Unselect?.Invoke();
-            WrongScreen.Wrong();
+            RayComand.EnableController();
         }
     }
     private void GoToPosition(GameObject stickman)
     {
         fertsStickman.AddComponent<Move>().StartMove(waipoint);
-        //stickman.AddComponent<Move>().StartMove(Reverswaipoint);
+        //stickman.AddComponent<Move>().StartMove(ReversWay());
         fertsStickman.AddComponent<CollisionStickman>().addLinks(stickman,select);
         fertsStickman.GetComponent<CapsuleCollider>().enabled = true;
         stickman.GetComponent<CapsuleCollider>().enabled = true;
     }
+    //private List<Point> ReversWay()
+    //{
+    //    if (reverswaipoint.Count > 1)
+    //    {
+    //        reverswaipoint.Clear();
+    //    }
+    //    int end = waipoint.Count - 1;
+    //    for (int i = 0; i < waipoint.Count; i++)
+    //    {
+    //        reverswaipoint.Add(waipoint[end]);
+    //        end--;
+    //    }
+    //    reverswaipoint.Add(start);
+    //    return reverswaipoint;
+    //}
 }

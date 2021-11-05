@@ -634,7 +634,7 @@ Transform:
   m_GameObject: {fileID: 8497349047834410082}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.6746471, y: -0.00050735474, z: -4.6091127}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8497349047834370056}
   - {fileID: 8497349047834370050}
@@ -673,6 +673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
+  line: 0
+  column: 0
 --- !u!136 &-8832993038294629211
 CapsuleCollider:
   m_ObjectHideFlags: 0

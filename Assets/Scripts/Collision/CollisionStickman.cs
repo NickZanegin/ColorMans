@@ -19,6 +19,7 @@ public class CollisionStickman : MonoBehaviour
             LvlManager.CheckLvl();
             select.StopSelect();
             Destroy(gameObject);
+            RayComand.EnableController();
         }
     }
     public void addLinks(GameObject stickman, SelectActive select)

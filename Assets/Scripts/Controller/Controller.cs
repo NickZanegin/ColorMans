@@ -22,4 +22,8 @@ public class Controller : MonoBehaviour
             }
         }
     }
+    public void Disable()
+    {
+        this.enabled = false;
+    }
 }
