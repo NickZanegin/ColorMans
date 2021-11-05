@@ -12,8 +12,9 @@ public class LvlManager : MonoBehaviour
     }
     private void Start()
     {
-        FindObjectOfType<Restart>().NewLink(this);
+        //FindObjectOfType<Restart>().NewLink(this);
         MoveStickmans.LinksNew();
+        CameraMove.RestartCamera();
     }
     public static void CheckLvl() => Instance.strtRoutine();
     public void strtRoutine()
@@ -29,7 +30,7 @@ public class LvlManager : MonoBehaviour
             var lvl = Resources.Load($"Prefab/{lvls}");
             var nextlvl = Instantiate(lvl, Vector3.zero, Quaternion.identity);
             Destroy(gameObject);
-            ChangeBG.NextBG();
+            //ChangeBG.NextBG();
         }
     }
     public void Restart()

@@ -39,6 +39,9 @@ public class RayComand : MonoBehaviour
         if (lastStickmanColor == fertsStickmanColor && ferstStik != stickman)
         {
             controller.Disable();
+            var anim = stickman.GetComponent<Animator>();
+            anim.SetBool("Select", true);
+            anim.SetBool("NoWay", false);
             move.Action(stickman);
             fertsStickmanColor = -1;
             lastStickmanColor = -1;
