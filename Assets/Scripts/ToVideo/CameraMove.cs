@@ -4,16 +4,12 @@ public class CameraMove : MonoBehaviour
 {
     Camera camera;
     [SerializeField] float time;
-    [SerializeField] GameObject lvl;
     bool start = true;
     float startSize;
-    Quaternion startRotation;
-    [SerializeField] float rotateAngule;
     static CameraMove cameraMove;
     private void Awake()
     {
         cameraMove = this;
-        startRotation = transform.rotation;
         camera = Camera.main;
         startSize = camera.orthographicSize;
     }
@@ -35,7 +31,5 @@ public class CameraMove : MonoBehaviour
     {
         camera.orthographicSize = startSize;
         start = true;
-        lvl = FindObjectOfType<LvlManager>().gameObject;
-        transform.rotation = startRotation;
     }
 }

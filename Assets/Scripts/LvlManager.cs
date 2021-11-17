@@ -5,6 +5,7 @@ public class LvlManager : MonoBehaviour
 {
     [SerializeField] private string lvls;
     [SerializeField] private string thisLvls;
+    Next_Button next;
     static LvlManager Instance;
     private void Awake()
     {
@@ -12,7 +13,10 @@ public class LvlManager : MonoBehaviour
     }
     private void Start()
     {
-        //FindObjectOfType<Restart>().NewLink(this);
+        next = FindObjectOfType<Next_Button>();
+        next.ManagerLink(this);
+        next.gameObject.SetActive(false);
+        FindObjectOfType<Restart>().NewLink(this);
         MoveStickmans.LinksNew();
         CameraMove.RestartCamera();
     }
@@ -27,16 +31,21 @@ public class LvlManager : MonoBehaviour
         var haveStickman = GetComponentInChildren<IColor>();
         if(haveStickman == null)
         {
-            var lvl = Resources.Load($"Prefab/{lvls}");
-            var nextlvl = Instantiate(lvl, Vector3.zero, Quaternion.identity);
-            Destroy(gameObject);
-            //ChangeBG.NextBG();
+            FinishLvl.Finish();
         }
+    }
+    public void LoadNextLvl()
+    {
+        var lvl = Resources.Load($"Prefab/{lvls}");
+        Instantiate(lvl, Vector3.zero, Quaternion.identity);
+        Destroy(gameObject);
+        //ChangeBG.NextBG();
     }
     public void Restart()
     {
         var lvl = Resources.Load($"Prefab/{thisLvls}");
-        var nextlvl = Instantiate(lvl, Vector3.zero, Quaternion.identity);
+        Instantiate(lvl, Vector3.zero, Quaternion.identity);
+        next.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 }
