@@ -1207,7 +1207,7 @@ MonoBehaviour:
   ferstLine:
   - {fileID: 6911547059360612801}
   - {fileID: 8122095112737643906}
-  - {fileID: 241653882079883202}
+  - {fileID: 0}
   secondLine:
   - {fileID: 6190408278074962524}
   - {fileID: 9211216799291615571}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   - {fileID: 6354622808186416683}
   - {fileID: 2426340293785078360}
   fourthLine:
-  - {fileID: 241653882079883202}
+  - {fileID: 0}
   - {fileID: 2826532663230189821}
   - {fileID: 4322830058075093930}
   emptyPoint: {fileID: 241653882079883202}
@@ -1765,6 +1765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8892742769416883687}
   - component: {fileID: 7118308282330241178}
+  - component: {fileID: -4783275865086560302}
   m_Layer: 0
   m_Name: 11lvl
   m_TagString: Untagged
@@ -1814,6 +1815,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvls: 12lvl
   thisLvls: 11lvl
+  lvl: 11
+--- !u!114 &-4783275865086560302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358647132271716376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3221870d403ff44f9e2521d45cbc484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 5680072553884671570}
+  - {fileID: 1143602300785513615}
+  - {fileID: 6133151261089834949}
 --- !u!1001 &476898885751636324
 PrefabInstance:
   m_ObjectHideFlags: 0

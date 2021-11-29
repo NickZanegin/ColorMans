@@ -3,8 +3,8 @@ using DG.Tweening;
 
 public class SelectActive : MonoBehaviour
 {
-    [SerializeField] private RayComand command;
-    [SerializeField] private MoveStickmans moveStickmans;
+    [SerializeField] private Controller.RayComand command;
+    [SerializeField] private Controller.MoveStickmans moveStickmans;
     [SerializeField] GameObject mesh;
     Vector3 scale;
     Tween scaler;

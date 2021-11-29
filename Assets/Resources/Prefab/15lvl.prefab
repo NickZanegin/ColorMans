@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1183395111494766975}
   - component: {fileID: 7897999802145565029}
+  - component: {fileID: -806294435188673882}
   m_Layer: 0
   m_Name: 15lvl
   m_TagString: Untagged
@@ -263,6 +264,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvls: 16lvl
   thisLvls: 15lvl
+  lvl: 15
+--- !u!114 &-806294435188673882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800028888600196224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3221870d403ff44f9e2521d45cbc484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 8970975994544581338}
+  - {fileID: 9144556521009564454}
+  - {fileID: 8151536344455965488}
 --- !u!1 &2028005067767862773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4577,7 +4595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 229
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
       propertyPath: m_BoundingSphereOverride.y
@@ -4589,14 +4607,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
---- !u!4 &8327517549077124540 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000010921236120, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
-  m_PrefabInstance: {fileID: 8331515188236518180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &8151536344455965488 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198000011976894484, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
+  m_PrefabInstance: {fileID: 8331515188236518180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8327517549077124540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000010921236120, guid: e37496e0c52f56749909e02c9c7d3cf9, type: 3}
   m_PrefabInstance: {fileID: 8331515188236518180}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8661981937083191752
@@ -4730,7 +4748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 45209dc68d36be94e9c02ecf1acc8a20, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 229
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 45209dc68d36be94e9c02ecf1acc8a20, type: 3}
       propertyPath: m_BoundingSphereOverride.y
@@ -4805,15 +4823,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: 1.2800018e-25
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 231
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 0
+      value: 2.5e-44
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.z
@@ -4821,13 +4839,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
---- !u!198 &8970975994544581338 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000011976894484, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
-  m_PrefabInstance: {fileID: 9133336144447341262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9137263956162499670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010921236120, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
+  m_PrefabInstance: {fileID: 9133336144447341262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8970975994544581338 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000011976894484, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
   m_PrefabInstance: {fileID: 9133336144447341262}
   m_PrefabAsset: {fileID: 0}

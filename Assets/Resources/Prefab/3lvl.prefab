@@ -887,6 +887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8892742769416883687}
   - component: {fileID: 7118308282330241178}
+  - component: {fileID: 8420292044393925140}
   m_Layer: 0
   m_Name: 3lvl
   m_TagString: Untagged
@@ -934,6 +935,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvls: 4lvl
   thisLvls: 3lvl
+  lvl: 3
+--- !u!114 &8420292044393925140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358647132271716376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3221870d403ff44f9e2521d45cbc484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 5680072553884671570}
+  - {fileID: 1143602300785513615}
+  - {fileID: 6133151261089834949}
 --- !u!1001 &476898885859339282
 PrefabInstance:
   m_ObjectHideFlags: 0

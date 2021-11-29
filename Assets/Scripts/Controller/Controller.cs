@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
-
-public class Controller : MonoBehaviour
+namespace Controller
 {
-    Camera mainCamera;
-    public Action<GameObject> tap;
-    void Start()
+
+    public class Controller : MonoBehaviour
     {
-        mainCamera = Camera.main;
-    }
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
+        Camera mainCamera;
+        public Action<GameObject> tap;
+        void Start()
         {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100) )
+            mainCamera = Camera.main;
+        }
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                var stickman = hit.collider.gameObject;
-                tap?.Invoke(stickman);
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100))
+                {
+                    var stickman = hit.collider.gameObject;
+                    tap?.Invoke(stickman);
+                }
             }
         }
-    }
-    public void Disable()
-    {
-        this.enabled = false;
+        public void Disable()
+        {
+            this.enabled = false;
+        }
     }
 }

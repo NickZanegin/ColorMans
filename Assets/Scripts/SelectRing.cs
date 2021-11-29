@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SelectRing : MonoBehaviour
 {
-    [SerializeField] private RayComand command;
-    [SerializeField] private MoveStickmans moveStickmans;
+    [SerializeField] private Controller.RayComand command;
+    [SerializeField] private Controller.MoveStickmans moveStickmans;
     ParticleSystem ring;
     GameObject selectStickman;
     private void Start()

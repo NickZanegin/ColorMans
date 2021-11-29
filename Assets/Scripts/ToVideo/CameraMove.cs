@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CameraMove : MonoBehaviour
@@ -7,6 +8,8 @@ public class CameraMove : MonoBehaviour
     bool start = true;
     float startSize;
     static CameraMove cameraMove;
+
+    public Action eventCameraReady;
     private void Awake()
     {
         cameraMove = this;
@@ -18,11 +21,11 @@ public class CameraMove : MonoBehaviour
         if (start)
         {
             camera.orthographicSize = Mathf.MoveTowards(camera.orthographicSize, 22, Time.deltaTime * time);
-            //transform.RotateAround(lvl.transform.position, Vector3.up, rotateAngule * Time.deltaTime);
             if (camera.orthographicSize <= 22.1)
             {
                 camera.orthographicSize = 22;
                 start = false;
+                eventCameraReady?.Invoke();
             }
         }
     }
