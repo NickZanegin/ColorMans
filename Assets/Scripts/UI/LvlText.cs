@@ -7,7 +7,11 @@ namespace Ui
     {
         [SerializeField] CameraMove camera;
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] TextMeshProUGUI finishText;
+        [SerializeField] Attempt attempt;
+        private void Awake()
+        {
+            attempt.GetLvlText(this);
+        }
         private void Start()
         {
             camera.eventCameraReady += HideText;

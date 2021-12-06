@@ -1,34 +1,43 @@
 using System.Collections;
 using UnityEngine;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
+using LionStudios.Suite.Analytics;
 
 public class LvlManager : MonoBehaviour
 {
     [SerializeField] private string lvls;
     [SerializeField] private string thisLvls;
-    [SerializeField] private int lvl; 
+    [SerializeField] private int lvl;
+    [SerializeField] Attempt attmptScore;
     Next_Button next;
     static LvlManager Instance;
-
+    int attemptNum = 1;
+    int curentLvl;
     private void Awake()
     {
         Instance = this;
     }
     private void Start()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "World_01", thisLvls, "Level_Progress");
-        next = FindObjectOfType<Next_Button>();
+        attemptNum = attmptScore.GetAttempt();
+        //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "World_01", thisLvls, "Level_Progress");
+        next = attmptScore.next_;
         next.ManagerLink(this);
         next.gameObject.SetActive(false);
-        FindObjectOfType<Restart>().NewLink(this);
+        attmptScore.restart.NewLink(this);
         Controller.MoveStickmans.LinksNew();
         CameraMove.RestartCamera();
         if (Ui.BarAnim.Progress(lvl))
         {
-            Ui.ProgressBar.BarUpdate(lvl);
+            curentLvl = Ui.ProgressBar.BarUpdate();
         }
-        FindObjectOfType<Ui.LvlText>().NewLvlText(lvl);
+        else
+        {
+            curentLvl = PlayerPrefs.GetInt("lvlUi");
+        }
+        attmptScore.lvlText.NewLvlText(curentLvl);
         Save.Save.SaveLvl(thisLvls);
+        LionAnalytics.LevelStart(lvl, attemptNum, null);
     }
     public static void CheckLvl() => Instance.strtRoutine();
     public void strtRoutine()
@@ -42,7 +51,9 @@ public class LvlManager : MonoBehaviour
         if(haveStickman == null)
         {
             FinishLvl.Finish();
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "World_01", thisLvls, "Level_Progress");
+            LionAnalytics.LevelComplete(lvl, attemptNum, null,null);
+            attmptScore.RemoveAttempt();
+            //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "World_01", thisLvls, "Level_Progress");
             StartCoroutine(waitExplosion());
         }
     }
@@ -53,16 +64,20 @@ public class LvlManager : MonoBehaviour
     }
     public void LoadNextLvl()
     {
-        var lvl = Resources.Load($"Prefab/{lvls}");
-        Instantiate(lvl, Vector3.zero, Quaternion.identity);
+        Instantiate(Resources.Load($"Prefab/{lvls}"), Vector3.zero, Quaternion.identity);
         ChangeBG.NextBG();
         Destroy(gameObject);
     }
     public void Restart()
     {
-        var lvl = Resources.Load($"Prefab/{thisLvls}");
-        Instantiate(lvl, Vector3.zero, Quaternion.identity);
+        Instantiate
+            (Resources.Load($"Prefab/{thisLvls}"), 
+            Vector3.zero, 
+            Quaternion.identity);
         next.gameObject.SetActive(true);
+        attmptScore.AddAttempt();
         Destroy(gameObject);
+        LionAnalytics.LevelFail(this.lvl, attemptNum, null);
+        LionAnalytics.LevelRestart(this.lvl, attemptNum, null);
     }
 }

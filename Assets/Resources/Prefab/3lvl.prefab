@@ -936,6 +936,7 @@ MonoBehaviour:
   lvls: 4lvl
   thisLvls: 3lvl
   lvl: 3
+  attmptScore: {fileID: 11400000, guid: 9a6aa0bdf6cea0e47931b6874aa5a656, type: 2}
 --- !u!114 &8420292044393925140
 MonoBehaviour:
   m_ObjectHideFlags: 0

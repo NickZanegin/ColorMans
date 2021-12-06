@@ -802,6 +802,7 @@ MonoBehaviour:
   lvls: 2lvl
   thisLvls: 1lvl
   lvl: 1
+  attmptScore: {fileID: 11400000, guid: 9a6aa0bdf6cea0e47931b6874aa5a656, type: 2}
 --- !u!114 &-8727369629698568436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1735,9 +1736,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8892742769416883687}
     m_Modifications:
+    - target: {fileID: 1000010114744968, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012903210382, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_Name
       value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383795915686306, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637386437405516, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010921236120, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_RootOrder
@@ -1761,7 +1774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010921236120, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1230717
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000010921236120, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1785,15 +1798,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 5.41e-43
+      value: 0.44921875
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 33
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 108886344203612496, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 135926341382990654, guid: 754db3e042b687d47b44a5609b03dead, type: 3}
       propertyPath: m_Enabled

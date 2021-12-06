@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -11,7 +12,8 @@ public class FinishLvl : MonoBehaviour
     [SerializeField] Image[] stars;
     static FinishLvl instance;
     Color hide;
-    int nextlvl = 0;
+
+    Sequence anim;
     private void Start()
     {
         instance = this;
@@ -27,28 +29,26 @@ public class FinishLvl : MonoBehaviour
     }
     private void TextAnim()
     {
-        var anim = DOTween.Sequence();
+        anim = DOTween.Sequence();
         anim.Append(text.DOFade(1, 1));
         anim.Append(stars[0].DOFade(1, 0.5f));
         anim.Append(stars[1].DOFade(1, 0.5f));
         anim.Append(stars[2].DOFade(1, 0.5f));
-        anim.AppendCallback(() => IfNextLvl());
+        anim.AppendCallback(() => StartCoroutine(WaitToNext()));
     }
-    private void IfNextLvl()
+    IEnumerator WaitToNext()
     {
-        if (nextlvl == 1)
+        yield return new WaitForSecondsRealtime(3);
+        if (next.gameObject.activeInHierarchy)
         {
-            Hide();
+            next.gameObject.GetComponent<Button>().onClick.Invoke();
         }
-        nextlvl = 0;
     }
     public void TextHide()
     {
-        if(nextlvl == 0)
-        {
-            Hide();
-        }
-        nextlvl = 1;
+        DOTween.KillAll();
+        anim.Kill();
+        Hide();
 
     }
     private void Hide()

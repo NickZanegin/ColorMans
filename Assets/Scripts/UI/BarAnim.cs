@@ -56,8 +56,10 @@ namespace Ui
                     center.color = green;
                     right.color = green;
                     progress.fillAmount = 0.159f;
+                    ProgressBar.CurentLvlAdd();
                     return true;
             }
+            ProgressBar.CurentLvlAdd();
             return false;
         }
     }

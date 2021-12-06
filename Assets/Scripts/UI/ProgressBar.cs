@@ -7,19 +7,33 @@ namespace Ui
     {
         [SerializeField] BarAnim anim;
         [SerializeField] TextMeshProUGUI pastlvl;
-        [SerializeField] TextMeshProUGUI curentlvl;
+        [SerializeField] TextMeshProUGUI centerlvl;
         [SerializeField] TextMeshProUGUI nextlvl;
         public static ProgressBar bar;
+        int curentLvl = 1;
         private void Awake()
         {
             bar = this;
         }
-        public static void BarUpdate(int lvl) => bar.UpdateBar(lvl);
-        private void UpdateBar(int lvl)
+        public static int BarUpdate() => bar.UpdateBar();
+        public static void CurentLvlUpdate(int lvl) => bar.UpdateCurentLvl(lvl);
+        public static void CurentLvlAdd() => bar.AddCurentLvl();
+        private void UpdateCurentLvl(int lvl)
         {
-            pastlvl.text = $"{lvl}";
-            curentlvl.text = $"{lvl+1}";
-            nextlvl.text = $"{lvl + 2}";
+            curentLvl = lvl;
+        }
+        private void AddCurentLvl()
+        {
+            curentLvl++;
+            Save.Save.SaveUiLvl(curentLvl);
+        }
+        private int UpdateBar()
+        {
+            pastlvl.text = $"{curentLvl}";
+            centerlvl.text = $"{curentLvl + 1}";
+            nextlvl.text = $"{curentLvl + 2}";
+            Save.Save.SaveUiLvl(curentLvl);
+            return curentLvl;
         }
     }
 }

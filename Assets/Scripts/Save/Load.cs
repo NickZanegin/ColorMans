@@ -6,6 +6,10 @@ namespace Save
     {
         private void Start()
         {
+            if (PlayerPrefs.HasKey("lvlUi"))
+            {
+                Ui.ProgressBar.CurentLvlUpdate(PlayerPrefs.GetInt("lvlUi"));
+            }
             string LoadLvl;
             if (!PlayerPrefs.HasKey("lvl"))
             {
@@ -15,8 +19,10 @@ namespace Save
             {
                 LoadLvl = PlayerPrefs.GetString("lvl");
             }
-            var lvl = Resources.Load($"Prefab/{LoadLvl}");
-            Instantiate(lvl, Vector3.zero, Quaternion.identity);
+            Instantiate
+                (Resources.Load($"Prefab/{LoadLvl}"), 
+                Vector3.zero, 
+                Quaternion.identity);
         }
     }
 }
