@@ -18,7 +18,7 @@ namespace Collisions
                 explosion.Play();
                 GetComponent<Move>().waypoints.Clear();
                 Destroy(lastStickman);
-                CameraShake.Shake();
+                //CameraShake.Shake();
                 LvlManager.CheckLvl();
                 select.StopSelect();
                 MMVibrationManager.Haptic(HapticTypes.MediumImpact, false, true, this);

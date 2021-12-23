@@ -9,11 +9,12 @@ namespace Controller
         static MoveStickmans moveStickmans;
         [SerializeField] PathWay.PathFinder pathFinder;
         [SerializeField] PathWay.PointsArray pointsArray;
+        [SerializeField] PathWay.DrowPath drow;
         [SerializeField] SelectActive select;
 
         GameObject fertsStickman;
         [SerializeField] List<Point> waipoint;
-        List<Point> reverswaipoint;
+        //List<Point> reverswaipoint;
         Point start;
 
         public Action<GameObject> PathFail;
@@ -21,7 +22,7 @@ namespace Controller
         private void Awake()
         {
             moveStickmans = this;
-            reverswaipoint = new List<Point>();
+            //reverswaipoint = new List<Point>();
         }
         public static void LinksNew() => moveStickmans.NewLicks();
         private void NewLicks()
@@ -62,6 +63,7 @@ namespace Controller
         }
         private void GoToPosition(GameObject stickman)
         {
+            //drow.Drow(waipoint);
             fertsStickman.AddComponent<Move>().StartMove(waipoint);
             //stickman.AddComponent<Move>().StartMove(ReversWay());
             fertsStickman.AddComponent<Collisions.CollisionStickman>().addLinks(stickman, select);
