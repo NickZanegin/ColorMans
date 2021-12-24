@@ -54,14 +54,14 @@ public class LvlManager : MonoBehaviour
             LionAnalytics.LevelComplete(lvl, attemptNum, null,null);
             attmptScore.RemoveAttempt();
             //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "World_01", thisLvls, "Level_Progress");
-            StartCoroutine(waitExplosion());
+            //StartCoroutine(waitExplosion());
         }
     }
-    IEnumerator waitExplosion()
-    {
-        yield return new WaitForSeconds(1);
-        GetComponent<FinishExplosion>().StartExplosion();
-    }
+    //IEnumerator waitExplosion()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    GetComponent<FinishExplosion>().StartExplosion();
+    //}
     public void LoadNextLvl()
     {
         Instantiate(Resources.Load($"Prefab/{lvls}"), Vector3.zero, Quaternion.identity);

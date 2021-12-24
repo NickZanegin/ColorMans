@@ -63,7 +63,7 @@ namespace Controller
         }
         private void GoToPosition(GameObject stickman)
         {
-            //drow.Drow(waipoint);
+            drow.Drow(fertsStickman ,waipoint);
             fertsStickman.AddComponent<Move>().StartMove(waipoint);
             //stickman.AddComponent<Move>().StartMove(ReversWay());
             fertsStickman.AddComponent<Collisions.CollisionStickman>().addLinks(stickman, select);

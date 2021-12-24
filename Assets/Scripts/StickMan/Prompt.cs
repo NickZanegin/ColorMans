@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Prompt : MonoBehaviour
@@ -10,9 +9,10 @@ public class Prompt : MonoBehaviour
     }
     IEnumerator PromptRoutine()
     {
-        yield return new WaitForSecondsRealtime(10);
+        var wait = new WaitForSecondsRealtime(5);
+        yield return wait;
         GetComponent<Animator>().SetBool("Help", true);
-        yield return new WaitForSecondsRealtime(10);
+        yield return wait;
         GetComponent<Animator>().SetBool("Help", false);
     }
 }

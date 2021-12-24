@@ -14,16 +14,16 @@ public class CameraMove : MonoBehaviour
     {
         cameraMove = this;
         camera = Camera.main;
-        startSize = camera.orthographicSize;
+        startSize = camera.fieldOfView;
     }
     private void Update()
     {
         if (start)
         {
-            camera.orthographicSize = Mathf.MoveTowards(camera.orthographicSize, 22, Time.deltaTime * time);
-            if (camera.orthographicSize <= 22.1)
+            camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, 88, Time.deltaTime * time);
+            if (camera.fieldOfView <= 89)
             {
-                camera.orthographicSize = 22;
+                camera.fieldOfView = 88;
                 start = false;
                 eventCameraReady?.Invoke();
             }
@@ -32,7 +32,7 @@ public class CameraMove : MonoBehaviour
     public static void RestartCamera() => cameraMove.Restart();
     private void Restart()
     {
-        camera.orthographicSize = startSize;
+        camera.fieldOfView = startSize;
         start = true;
     }
 }

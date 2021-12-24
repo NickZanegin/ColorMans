@@ -7,11 +7,11 @@ public class FinishExplosion : MonoBehaviour
     [SerializeField] ParticleSystem[] particles;
     List<Point> points;
     Point lastPoint;
-    private void Start()
-    {
-        points = new List<Point>();
-        Points();
-    }
+    //private void Start()
+    //{
+    //    points = new List<Point>();
+    //    Points();
+    //}
     private void Points()
     {
         var point = GetComponentInChildren<PathWay.PointsArray>().GetPoints();

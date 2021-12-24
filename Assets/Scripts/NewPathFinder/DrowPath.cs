@@ -7,19 +7,47 @@ namespace PathWay
     public class DrowPath : MonoBehaviour
     {
         [SerializeField] LineRenderer line;
-
-        public void Drow(List<Point> way)
+        GameObject stickman;
+        [SerializeField] List<Point> points;
+        private void Start()
         {
-            StartCoroutine(DrowLine(way));
+            points = new List<Point>();
         }
-        IEnumerator DrowLine(List<Point> way)
+        public void Drow(GameObject start, List<Point> way)
         {
-            var wait = new WaitForSeconds(1);
-            line.positionCount = way.Count;
-            for (int i = 0; i < way.Count; i++)
+            line.positionCount = way.Count+1;
+            stickman = start;
+            points = way;
+            DrowLine();
+            StartCoroutine(LineMoving());
+        }
+        private void DrowLine()
+        {
+            for (int i = 0; i < points.Count; i++)
             {
-                line.SetPosition(i, way[i].transform.position);
-                yield return wait;
+                line.SetPosition(i + 1, points[i].transform.position);
+            }
+        }
+        IEnumerator LineMoving()
+        {
+            var finish = false;
+            int count = points.Count;
+            while (!finish)
+            {
+                line.SetPosition(0, stickman.transform.position);
+                if(points.Count != count)
+                {
+                    count--;
+                    DrowLine();
+                }
+                if(count == 1)
+                {
+                    finish = true;
+                    line.positionCount = 0;
+                    break;
+                }
+                line.SetPosition(0, stickman.transform.position);
+                yield return null;
             }
         }
     }
