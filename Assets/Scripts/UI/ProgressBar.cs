@@ -15,7 +15,7 @@ namespace Ui
         {
             bar = this;
         }
-        public static int BarUpdate() => bar.UpdateBar();
+        public static void BarUpdate() => bar.UpdateBar();
         public static void CurentLvlUpdate(int lvl) => bar.UpdateCurentLvl(lvl);
         public static void CurentLvlAdd() => bar.AddCurentLvl();
         private void UpdateCurentLvl(int lvl)
@@ -25,15 +25,15 @@ namespace Ui
         private void AddCurentLvl()
         {
             curentLvl++;
+            BarAnim.Progress(curentLvl);
             Save.Save.SaveUiLvl(curentLvl);
         }
-        private int UpdateBar()
+        private void UpdateBar()
         {
-            pastlvl.text = $"{curentLvl}";
-            centerlvl.text = $"{curentLvl + 1}";
-            nextlvl.text = $"{curentLvl + 2}";
-            Save.Save.SaveUiLvl(curentLvl);
-            return curentLvl;
+            int lvl = curentLvl;
+            pastlvl.text = $"{lvl}";
+            centerlvl.text = $"{lvl + 1}";
+            nextlvl.text = $"{lvl + 2}";
         }
     }
 }

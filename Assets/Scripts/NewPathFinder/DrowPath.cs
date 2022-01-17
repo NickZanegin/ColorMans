@@ -13,8 +13,9 @@ namespace PathWay
         {
             points = new List<Point>();
         }
-        public void Drow(GameObject start, List<Point> way)
+        public void Drow(GameObject start, List<Point> way, Gradient lineColor)
         {
+            line.colorGradient = lineColor;
             line.positionCount = way.Count+1;
             stickman = start;
             points = way;
@@ -30,17 +31,16 @@ namespace PathWay
         }
         IEnumerator LineMoving()
         {
-            var finish = false;
+            bool finish = false;
             int count = points.Count;
             while (!finish)
             {
-                line.SetPosition(0, stickman.transform.position);
                 if(points.Count != count)
                 {
                     count--;
                     DrowLine();
                 }
-                if(count == 1)
+                if(count == 0)
                 {
                     finish = true;
                     line.positionCount = 0;

@@ -1,11 +1,9 @@
+using Ui;
 using UnityEngine;
 
 public class Next_Button : MonoBehaviour
 {
-    [SerializeField] GameObject text;
-    [SerializeField] GameObject finisText;
     [SerializeField] GameObject restart;
-    [SerializeField] FinishLvl finish;
     [SerializeField] Attempt attempt;
     LvlManager manager;
     private void Awake()
@@ -18,10 +16,11 @@ public class Next_Button : MonoBehaviour
     }
     public void NextLvl()
     {
-        finisText.SetActive(false);
-        finish.TextHide();
-        text.SetActive(true);
-        manager.LoadNextLvl();
-        restart.SetActive(true);
+        YsoCorp.GameUtils.YCManager.instance.adsManager.ShowInterstitial(() =>
+        {
+            manager.LoadNextLvl();
+            restart.SetActive(true);
+            ProgressBar.CurentLvlAdd();
+        });
     }
 }

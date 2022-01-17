@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
+using Ui;
 using UnityEngine.UI;
 
 public class FinishLvl : MonoBehaviour
@@ -8,16 +10,22 @@ public class FinishLvl : MonoBehaviour
     [SerializeField] Next_Button next;
     [SerializeField] GameObject finish;
     [SerializeField] GameObject restart;
-    [SerializeField] Image text;
+    [SerializeField] Transform text;
     [SerializeField] Image[] stars;
+    [SerializeField] private Confetty confetty;
     static FinishLvl instance;
-    Color hide;
+    Vector3 hide;
+    public int speed = 5;
+    private float startPointText;
+    private float finishPointText;
 
     Sequence anim;
     private void Start()
     {
+        hide = stars[0].transform.localScale;
         instance = this;
-        hide = new Color(1, 1, 1, 0);
+        startPointText = text.localPosition.x;
+        finishPointText = -startPointText;
     }
     public static void Finish() => instance.ActiveteFinish();
     public void ActiveteFinish()
@@ -29,22 +37,45 @@ public class FinishLvl : MonoBehaviour
     }
     private void TextAnim()
     {
-        anim = DOTween.Sequence();
-        anim.Append(text.DOFade(1, 1));
-        anim.Append(stars[0].DOFade(1, 0.5f));
-        anim.Append(stars[1].DOFade(1, 0.5f));
-        anim.Append(stars[2].DOFade(1, 0.5f));
-        anim.AppendCallback(() => StartCoroutine(WaitToNext()));
+        StartCoroutine(FinishTextAnim());
     }
-    IEnumerator WaitToNext()
+
+    IEnumerator FinishTextAnim()
     {
-        yield return new WaitForSecondsRealtime(3);
-        if (next.gameObject.activeInHierarchy)
+        confetty.PlayeConfety();
+        yield return StartCoroutine(TextMove(0));
+        anim = DOTween.Sequence();
+        anim.Append(stars[0].transform.DOScale(1.4f, 0.4f));
+        anim.AppendCallback(() => Vibration());
+        anim.Append(stars[1].transform.DOScale(1.4f, 0.4f));
+        anim.AppendCallback(() => Vibration());
+        anim.Append(stars[2].transform.DOScale(1.4f, 0.4f));
+        anim.AppendCallback(() => Vibration());
+        yield return new WaitForSeconds(3);
+        yield return StartCoroutine(TextMove(finishPointText,5));
+        ButtonInvoke();
+    }
+    private IEnumerator TextMove(float pointX, float controlDistance = 2f)
+    {
+        Vector2 movePoint = new Vector2(pointX, text.localPosition.y);
+        while (Vector2.Distance(text.localPosition,movePoint) > controlDistance)
         {
-            next.gameObject.GetComponent<Button>().onClick.Invoke();
+            text.localPosition = Vector2.MoveTowards
+                (text.localPosition, 
+                    movePoint, 
+                    speed * Time.deltaTime);
+            yield return null;
         }
     }
-    public void TextHide()
+
+    private void ButtonInvoke()
+    {
+        text.localPosition = new Vector2(startPointText, text.localPosition.y);
+        TextHide();
+        next.gameObject.GetComponent<Button>().onClick.Invoke();
+    }
+
+    private void TextHide()
     {
         DOTween.KillAll();
         anim.Kill();
@@ -53,9 +84,13 @@ public class FinishLvl : MonoBehaviour
     }
     private void Hide()
     {
-        text.color = hide;
-        stars[0].color = hide;
-        stars[1].color = hide;
-        stars[2].color = hide;
+        for (int i = 0; i < stars.Length; i++)
+        {
+            stars[i].transform.localScale = hide;
+        }
+    }
+    private void Vibration()
+    {
+        MMVibrationManager.Haptic(HapticTypes.MediumImpact, false, true, this);
     }
 }

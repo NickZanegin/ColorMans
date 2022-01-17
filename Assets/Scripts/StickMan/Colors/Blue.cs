@@ -5,6 +5,7 @@ public class Blue : MonoBehaviour, IColor
     [SerializeField] private ParticleSystem explosion;
     public int line;
     public int column;
+    public Gradient lineColor;
     public int ColorIndex()
     {
         return 1;
@@ -20,5 +21,9 @@ public class Blue : MonoBehaviour, IColor
     public ParticleSystem GetParticle()
     {
         return explosion;
+    }
+    public Gradient GetLineColor()
+    {
+        return lineColor;
     }
 }

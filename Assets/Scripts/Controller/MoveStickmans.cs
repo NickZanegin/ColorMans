@@ -63,27 +63,12 @@ namespace Controller
         }
         private void GoToPosition(GameObject stickman)
         {
-            drow.Drow(fertsStickman ,waipoint);
+            Gradient lineColor = fertsStickman.gameObject.GetComponent<IColor>().GetLineColor();
+            drow.Drow(fertsStickman ,waipoint, lineColor );
             fertsStickman.AddComponent<Move>().StartMove(waipoint);
-            //stickman.AddComponent<Move>().StartMove(ReversWay());
             fertsStickman.AddComponent<Collisions.CollisionStickman>().addLinks(stickman, select);
             fertsStickman.GetComponent<CapsuleCollider>().enabled = true;
             stickman.GetComponent<CapsuleCollider>().enabled = true;
         }
-        //private List<Point> ReversWay()
-        //{
-        //    if (reverswaipoint.Count > 1)
-        //    {
-        //        reverswaipoint.Clear();
-        //    }
-        //    int end = waipoint.Count - 1;
-        //    for (int i = 0; i < waipoint.Count; i++)
-        //    {
-        //        reverswaipoint.Add(waipoint[end]);
-        //        end--;
-        //    }
-        //    reverswaipoint.Add(start);
-        //    return reverswaipoint;
-        //}
     }
 }

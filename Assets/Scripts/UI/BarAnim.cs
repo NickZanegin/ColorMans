@@ -12,7 +12,6 @@ namespace Ui
         [SerializeField] TextMeshProUGUI right;
         Color green;
         static BarAnim bar;
-        bool Start = true;
         int lvl = -1;
         private void Awake()
         {
@@ -30,11 +29,6 @@ namespace Ui
             else
             {
                 this.lvl = lvl;
-            }
-            if (Start)
-            {
-                Start = false;
-                return true;
             }
             var amount = progress.fillAmount;
             switch (amount)
@@ -56,10 +50,9 @@ namespace Ui
                     center.color = green;
                     right.color = green;
                     progress.fillAmount = 0.159f;
-                    ProgressBar.CurentLvlAdd();
+                    ProgressBar.BarUpdate();
                     return true;
             }
-            ProgressBar.CurentLvlAdd();
             return false;
         }
     }

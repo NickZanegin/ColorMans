@@ -1,3 +1,4 @@
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 namespace Controller
 {
@@ -18,6 +19,11 @@ namespace Controller
             anim.SetBool("NoWay", true);
             anim.SetBool("Select", false);
             WrongScreen.Wrong();
+            Vibration();
+        }
+        private void Vibration()
+        {
+            MMVibrationManager.Haptic(HapticTypes.Warning, false, true, this);
         }
     }
 }

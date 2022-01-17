@@ -6,11 +6,6 @@ public class Attempt : ScriptableObject
     public int attemptNumber = 1;
     public Next_Button next_;
     public Restart restart;
-    public Ui.LvlText lvlText;
-    public void GetLvlText(Ui.LvlText lvl)
-    {
-        lvlText = lvl;
-    }
     public void GetRestart(Restart rest)
     {
         restart = rest;
